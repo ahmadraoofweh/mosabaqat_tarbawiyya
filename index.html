@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/styles/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/styles/index.css">
+    <link rel="stylesheet" href="./assets/styles/popup.css">
+    <title>المسابقة التربوية</title>
+</head>
+
+<body>
+    <div class="logo">
+        <img draggable="false" src="./assets/styles/logo.png" alt="شعار">
+        <p>مسجد الحسين</p>
+    </div>
+    <div class="qism">
+        <img draggable="false" src="./assets/styles/logo.png" alt="شعار">
+        <p>قسم التّربية</p>
+    </div>
+    
+    <div class="nashat">
+        <img draggable="false" src="./assets/styles/logo.png" alt="شعار">
+        <p>الفتح القادم: جيل يجدد العهد</p>
+    </div>
+
+    <div class="popup">
+        <div class="closePopup">X</div>
+        <h1 class="popupTitle">تحذير!</h1>
+        <div class="popupContent">اِختر أسماءً للفرق!</div>
+        <div class="answers">
+            <div class="cancelPopup">لا</div>
+            <div class="okPopup">نعم</div>
+        </div>
+        </div>
+    <div class="quizzes">
+        
+    </div>
+    <div class="body">
+        <h1>اِختر سؤالًا من الأسئلة التّالية</h1>
+        <div class="questions"></div>
+        
+        <div class="reset">RESET</div>
+
+        <div class="teams">
+            <div class="team1">
+                <img src="" alt="">
+                <input placeholder="أدخل اسم الفريق" class="name">
+                <br>
+                <span class="pointsText">النّقاط: </span>
+                <input value="0" class="points">
+            </div>
+            <div class="team2">
+                <img src="" alt="">
+                <input placeholder="أدخل اسم الفريق" class="name">
+                <br>
+                <span class="pointsText">النّقاط: </span>
+                <input value="0" class="points">
+            </div>
+        </div>
+    </div>
+
+    <div class="questionPage">
+        <h1>الـــــــــــــسّـــــــــــؤال</h1>
+        <div class="questionContent"></div>
+        <div class="choices">
+        </div>
+        <div class="timer">
+            <span red="false" class="time">0</span><span> ثـ</span>
+        </div>
+    </div>
+
+    <script src="./lib/config.js"></script>
+    <script src="./lib/showPopup.js"></script>
+    <script type="module" src="./lib/loadConfig.js"></script>
+    <script src="./lib/setQuestionData.js"></script>
+    <script src="./lib/revealAnswers.js"></script>
+    <script src="./lib/returnToQuestions.js"></script>
+    <script src="./lib/processQuestion.js"></script>
+    <script src="./lib/checkQuestionResult.js"></script>
+    <script src="./lib/reset.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
