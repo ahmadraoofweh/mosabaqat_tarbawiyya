@@ -1,107 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-    <meta charset="UTF-8">
-    <title>مؤسس المسابقات التّربويّة</title>
-    <link rel="shortcut icon" href="../assets/styles/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/styles/config_generator.css">
-    <link rel="stylesheet" href="../assets/styles/popup.css">
-
-</head>
-
-<body>
-    <div class="popup">
-        <div class="closePopup">X</div>
-        <h1 class="popupTitle">تحذير!</h1>
-        <div class="popupContent">اِختر أسماءً للفرق!</div>
-        <div class="answers">
-            <div class="cancelPopup">لا</div>
-            <div class="okPopup">نعم</div>
-        </div>
-    </div>
-    <h2>مؤسس المسابقات التّربويّة</h2>
-
-    <div class="section">
-        <h3>📂 إدارة الملفات</h3>
-        <button class="btn-upload" onclick="validateAndUpload()">☁️ حفظ المسابقة النّهائيّة</button>
-        <button class="btn-export" onclick="validateAndDownload()">💾 تحميل ملف JSON النهائي</button>
-        <button style="background:#6c757d; color:white;" onclick="document.getElementById('fileInput').click()">📥 رفع
-            ملف JSON لتعديله</button>
-        <input type="file" id="fileInput" style="display:none" accept=".json" onchange="importJSON(event)">
-    </div>
-
-    <div class="section">
-        <h3>📚 اسم النّشاط</h3>
-        <div style="display:flex; flex-direction: column; gap:10px;">
-            <div style="display:flex; gap:10px;">
-                <select id="nashatSelect" style="flex:1; padding:10px; border-radius:5px;"
-                    onchange="toggleNashatInput(this.value)">
-                    <option value="new">➕ إنشاء نشاط جديد...</option>
-                </select>
-                <button type="button" id="checkIdBtn" onclick="checkIdExists()"
-                    style="background:#ffc107; color:#212529;">🔍 فحص التوفر</button>
-                <button type="button" id="deleteBtn" onclick="deleteExistingQuiz()"
-                    style="background:#dc3545; color:white; display:none;">🗑️ حذف النشاط</button>
-            </div>
-            <input type="text" id="nashatInput" placeholder="أدخل اسم النشاط الجديد هنا..." oninput="nashat(event)">
-        </div>
-        <span id="idStatus" style="font-size: 0.8rem; margin-top: 5px; display: block;"></span>
-    </div>
-
-    <div class="section" style="background: #f8f0ff;">
-        <h3>🎯 جلب سؤال عشوائي</h3>
-        <div style="display:flex; gap:10px; align-items:center; flex-wrap: wrap;">
-            <select id="category" style="padding:8px; border-radius: 5px; border: 1px solid #ccc;"></select>
-            <select id="level" style="padding:8px; border-radius: 5px; border: 1px solid #ccc;">
-                <option value="level1">المستوى 1</option>
-                <option value="level2">المستوى 2</option>
-                <option value="level3">المستوى 3</option>
-            </select>
-            <button class="btn-api" onclick="fetchRandom()">جلب سؤال عشوائي</button>
-        </div>
-    </div>
-
-    <div class="section">
-        <h3>❓ قائمة الأسئلة</h3>
-        <div class="list-controls">
-            <input type="text" id="searchInput" class="search-input" placeholder="بحث في الأسئلة..."
-                oninput="filterQuestions()">
-            <span class="counter" id="qCounter">عدد الأسئلة: 0</span>
-            <button class="btn-clear" onclick="clearAllQuestions()">🗑 مسح الكل</button>
-        </div>
-        <div id="questionsContainer"></div>
-        <button class="btn-add" onclick="addQuestion()">➕ إضافة سؤال يدوي</button>
-    </div>
-    <div class="section">
-        <h3>🖼 الصور</h3>
-        <div class="grid" id="imageContainer"></div>
-    </div>
-
-    <div class="section">
-        <h3>🎨 الألوان</h3>
-        <div class="grid" id="colorPickerContainer"></div>
-    </div>
-    <div class="section">
-        <h3>👁 معاينة قائمة الأرقام (الصفحة الرئيسية)</h3>
-        <div class="gridPreviewBox">
-            <div class="questionsGridPreview" id="pGrid">
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h3>👁 معاينة صفحة السؤال</h3>
-        <div class="previewBox">
-            <h2 id="pQ">نص السؤال</h2>
-            <div id="pChoices"></div>
-        </div>
-    </div>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-    <script type="module" src="../lib/config.js"></script>
-    <script src="../lib/showPopup.js"></script>
-    <script src="../lib/config_generator/index.js"></script>
-</body>
-
-</html>
