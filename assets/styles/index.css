@@ -226,6 +226,7 @@ input.points {
 .logo>p,
 .qism>p,
 .nashat>p {
+    transition: all ease-in-out .2s;
     align-items: center;
     justify-items: center;
     align-self: center;
